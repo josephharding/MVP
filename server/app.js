@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var fs = require('fs');
 
 server.listen(9000, function () {
   var host = server.address().address;
@@ -11,6 +12,19 @@ server.listen(9000, function () {
 
 exports = module.exports = app;
 
+var options = {
+  root: __dirname + '/../client/',
+  dotfiles: 'deny',
+  headers: {
+    'x-timestamp' : Date.now(),
+    'x-sent' : true
+  }
+}
+
 app.get('/', function(req, res){
-  res.render('index')
+  res.sendFile('index.html', options, function(err){
+    if (err) {
+      console.log(err, options)
+    } 
+  })
 })
