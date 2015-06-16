@@ -1,0 +1,30 @@
+{
+  "name": "MVP",
+  "version": "1.0.0",
+  "description": "Money never sleeps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jcg-capital/MVP.git"
+  },
+  "author": "James Munsch, Garrett Fitzgerald, Charles Harding",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcg-capital/MVP/issues"
+  },
+  "homepage": "https://github.com/jcg-capital/MVP",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "browserify": "^10.2.4",
+    "express": "^4.12.4",
+    "node": "0.0.0",
+    "react": "^0.13.3",
+    "requirejs": "^2.1.18"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
