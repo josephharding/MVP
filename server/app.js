@@ -21,6 +21,9 @@ var options = {
   }
 }
 
+// tell node to server static content (js, css, images) from the 'client' directory
+app.use(express.static("client"));
+
 app.get('/', function(req, res){
   res.sendFile('index.html', options, function(err){
     if (err) {
