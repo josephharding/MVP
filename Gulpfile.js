@@ -96,6 +96,7 @@ gulp.task("webpack:build", function(callback) {
     }));
     callback();
   });
+});
 
 gulp.task('bs-reload', function () {
     browserSync.reload();
