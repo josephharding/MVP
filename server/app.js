@@ -28,3 +28,34 @@ app.get('/', function(req, res){
     } 
   })
 })
+
+var Quandl = require('quandl')
+var quandl = new Quandl({
+    auth_token: "vtyjDff63Y15eQuxnSGK",
+    api_version: 1,
+});
+
+
+app.get('/testdata', function(req, res){
+  console.log('url: ', req.url)
+  console.log('body: ', req.body)
+  // See https://www.quandl.com/help/api#A-Simple-Example
+  // AND https://www.quandl.com/help/api
+  var code = {
+    'source': "WIKI",
+    'table': "AAPL"
+  }
+  var options = { 
+    column:"4",
+    sort_order:"asc",
+    collapse:"quarterly",
+    trim_start:"2012-01-01",
+    trim_end:"2013-12-31"
+  }
+  quandl.dataset(code, options, function(err, response){
+      if(err){
+        console.log('ENDPOINT: /testdata : ERROR',err);
+      }
+      res.end(response)
+  });
+})
