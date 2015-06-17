@@ -7,12 +7,9 @@
  
     <link href="http://getbootstrap.com/examples/justified-nav/justified-nav.css" rel="stylesheet">
  
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" charset="utf-8"></script>
 
-    
-
-    </script>
- 
 </head>
  
 <body>
@@ -54,6 +51,14 @@
 		    "sale": "176",
 		    "year": "2010"
 		}];
+    // var data;
+    // $(document).ready(function(){
+    //   $.get('/testdata', function(data, status){
+    //           data = data
+    //           alert("Data: " + data + "\nStatus: " + status);
+    //           console.log('DATA', data)
+    //       });   
+    // })
 
     // Create x, y axis scale of graph
 
@@ -86,7 +91,7 @@
    		})
    		.y(function(d) {
    			return yScale(d.sale);
-   		});
+   		})
    		.interpolate("basis");
 
 
