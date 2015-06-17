@@ -32,38 +32,32 @@
 
     // Sample data to graph
 
-		var data = [{
-		    "sale": "202",
-		    "year": "2000"
-		}, {
-		    "sale": "215",
-		    "year": "2001"
-		}, {
-		    "sale": "179",
-		    "year": "2002"
-		}, {
-		    "sale": "199",
-		    "year": "2003"
-		}, {
-		    "sale": "134",
-		    "year": "2003"
-		}, {
-		    "sale": "176",
-		    "year": "2010"
-		}];
-    var GETTHISDATA;
-    $(document).ready(function(){
-      $.get('/testdata', function(data, status){
-              GETTHISDATA = data
-              alert("Data: " + data + "\nStatus: " + status);
-              console.log('GETTHISDATA', GETTHISDATA)
-          });   
-    })
+		// var data = [{
+		//     "sale": "202",
+		//     "year": "2000"
+		// }, {
+		//     "sale": "215",
+		//     "year": "2001"
+		// }, {
+		//     "sale": "179",
+		//     "year": "2002"
+		// }, {
+		//     "sale": "199",
+		//     "year": "2003"
+		// }, {
+		//     "sale": "134",
+		//     "year": "2003"
+		// }, {
+		//     "sale": "176",
+		//     "year": "2010"
+		// }];
+
+
 
     // Create x, y axis scale of graph
 
-    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000,2010]),
-	yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([134,215]),
+  xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000,2010]),
+	yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0,800]),
 
 	// Create axes
 
@@ -94,12 +88,22 @@
    		})
    		.interpolate("basis");
 
+    $(document).ready(function(){
+      $.get('/testdata', function(response, status){
+        response = JSON.parse(response).data
+        var data = response.map(function(c,i,a){
+          console.log(c[1])
+          return {'year': c[0], 'sale':c[1]}
+        })
+        vis.append('svg:path')
+          .attr('d', lineGen(data))
+          .attr('stroke', 'green')
+          .attr('stroke-width', 2)
+          .attr('fill', 'none')
+      });   
+    })
 
-   	vis.append('svg:path')
-   		.attr('d', lineGen(data))
-   		.attr('stroke', 'green')
-   		.attr('stroke-width', 2)
-   		.attr('fill', 'none')
+
 
 	</script>
 
