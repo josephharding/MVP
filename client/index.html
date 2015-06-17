@@ -1,111 +1,23 @@
-
+<!DOCTYPE html>
 <html lang="en">
  
 <head>
  
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
- 
-    <link href="http://getbootstrap.com/examples/justified-nav/justified-nav.css" rel="stylesheet">
- 
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8">
+  <meta charset="UTF-8">
+  <title>JCG Capital</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
 
-    
-
-    </script>
- 
 </head>
  
 <body>
+  <script src="https://fb.me/react-0.13.3.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+  <script src="components/Chart.jsx" type="text/jsx"></script>
 
-	<svg id="visualisation" width="1000" height="500"></svg>
- 
- 	<script type='text/javascript'>
-
- 	// Create vis variable for visualisation SVG element in DOM
-
-    	var vis = d3.select("#visualisation"),
-    	WIDTH = 1000,
-    	HEIGHT = 500,
-    	MARGINS = {
-    		top: 20,
-    		right: 20,
-    		bottom: 20,
-    		left: 50
-    	};
-
-    // Sample data to graph
-
-		var data = [{
-		    "sale": "202",
-		    "year": "2000"
-		}, {
-		    "sale": "215",
-		    "year": "2001"
-		}, {
-		    "sale": "179",
-		    "year": "2002"
-		}, {
-		    "sale": "199",
-		    "year": "2003"
-		}, {
-		    "sale": "134",
-		    "year": "2003"
-		}, {
-		    "sale": "176",
-		    "year": "2010"
-		}];
-
-    // Create x, y axis scale of graph
-
-    xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([2000,2010]),
-	yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([134,215]),
-
-	// Create axes
-
-	xAxis = d3.svg.axis()
-		.scale(xScale),
-	yAxis = d3.svg.axis()
-		.scale(yScale)
-		.orient('left');
-
-
-
-	vis.append("svg:g")
-		.attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
-		.call(xAxis);
-
-	vis.append("svg:g")
-		.attr("transform", "translate(" + (MARGINS.left) + ",0)")
-    	.call(yAxis);
-
-   // Add line to graph
-
-    var lineGen = d3.svg.line()
-   		.x(function(d) {
-   			return xScale(d.year);
-   		})
-   		.y(function(d) {
-   			return yScale(d.sale);
-   		});
-   		.interpolate("basis");
-
-
-   	vis.append('svg:path')
-   		.attr('d', lineGen(data))
-   		.attr('stroke', 'green')
-   		.attr('stroke-width', 2)
-   		.attr('fill', 'none')
-
-	</script>
-
-    <div class="container">
- 
-        <div class="jumbotron">
- 
-        </div>
- 
-    </div>
- 
+  <script type="text/jsx">
+    var chart = React.createElement(Chart);
+    React.render(chart, document.body);
+  </script>
 </body>
  
 </html>
