@@ -56,6 +56,6 @@ app.get('/testdata', function(req, res){
       if(err){
         console.log('ENDPOINT: /testdata : ERROR',err);
       }
-      console.log(response);
+      res.end(response)
   });
 })

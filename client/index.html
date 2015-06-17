@@ -51,14 +51,14 @@
 		    "sale": "176",
 		    "year": "2010"
 		}];
-    // var data;
-    // $(document).ready(function(){
-    //   $.get('/testdata', function(data, status){
-    //           data = data
-    //           alert("Data: " + data + "\nStatus: " + status);
-    //           console.log('DATA', data)
-    //       });   
-    // })
+    var GETTHISDATA;
+    $(document).ready(function(){
+      $.get('/testdata', function(data, status){
+              GETTHISDATA = data
+              alert("Data: " + data + "\nStatus: " + status);
+              console.log('GETTHISDATA', GETTHISDATA)
+          });   
+    })
 
     // Create x, y axis scale of graph
 
